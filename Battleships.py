@@ -146,36 +146,54 @@ class Game:
         self.display_message(Strings.RESET_MESSAGE + "\n" + self.__player.ships_to_place_info())
 
     def get_player_ships_to_place(self):
+        """
+        Zwraca statki do rozstawienia dla gracza
+        """
         return self.__player.get_ships_to_place()
 
     def display_message(self, message):
         """
-        Wyświetla komunikat
+        Wyświetla komunikat w górnej części okna
         :param message: treść komunikatu
         """
         self.__message_label["text"] = message
 
     def get_displayed_message(self):
+        """
+        Zwraca aktualnie wyświetlony komunikat
+        """
         return self.__message_label["text"]
 
     def get_computer_ships_coordinates(self):
+        """
+        Zwraca współrzędne staków komputera
+        """
         ships_fields = []
         for ship in self.__computer.get_ships_list():
             ships_fields += ship.get_ship_position()
         return ships_fields
 
     def get_computer_board(self):
+        """
+        Zwraca plansze przycisków komputera
+        """
         return self.__computer_board
 
     def get_player_board(self):
+        """
+        Zwraca plansze przycisków gracza
+        """
         return self.__player_board
 
     def get_player_ship_list(self):
+        """
+        Zwraca listę statków gracza
+        """
         return self.__player.get_ships_list()
 
     def place_ship(self, coordinate):
         """
-        Rozmieszcza statek używkownika
+        Rozmieszcza statek gracza
         :param coordinate: współrzędne x oraz y przycisku
         """
         if self.__player.get_ships_to_place():

@@ -6,12 +6,11 @@ import random
 
 class Ship:
     """
-    Klasa Ship reprezentująca pojedynczy statek
+    Klasa reprezentująca pojedynczy statek
     """
     def __init__(self, x1, y1, x2, y2):
         """
-        konstruktor klasy
-        Uzupełnia współdzędne statku, w zależności od orientacji
+        Uzupełnia współdzędne statku
         :param x1: współrzędna x początku statku
         :param y1: współrzędna y początku statku
         :param x2: współrzędna x końca statku
@@ -56,7 +55,7 @@ class Ship:
 
     def add_ship_coordinate(self, x, y):
         """
-        Dodaje współrzędne statku do listy __ship_position
+        Dodaje współrzędne statku do listy ship_position
         :param x: współrzędna x pola
         :param y: współrzędna y pola
         """
@@ -71,11 +70,10 @@ class Ship:
 
 class Competitor:
     """
-    Klasa Competitor reprezentująca uczestnika bitwy
+    Klasa reprezentująca uczestnika bitwy
     """
     def __init__(self, name):
         """
-        konstruktor
         :param name: nazwa gracza
         """
         self.__competitor_name = name
@@ -156,36 +154,31 @@ class Competitor:
 
     def get_competitor_name(self):
         """
-        zwraca prywatna zmienna zawierająca nazwę gracza
-        :return: __owner : string
+        Zwraca zmienną zawierająca nazwę uczestnika
         """
         return self.__competitor_name
 
     def get_ships_list(self):
         """
-        zwraca prywatną zmienną __list_of_ships lista zawierająca statki umieszczone na planszy gracza
-        :return: __list_of_ships : list
+        Zwraca listę statków umieszczonych na planszy uczestnika
         """
         return self.__ships_list
 
     def get_ships_to_place(self):
         """
-        zwraca prywatną zmienną __ships_to_set informujacą o statkach do ustawienia
-        :return: __ships_to_set :set
+        Zwraca statki do rozmieszczenia
         """
         return self.__ships_to_place
 
     def get_my_shots(self):
         """
-        zwraca prywatną zmienną __my_shots
-        :return: __my_shots :set
+        Zwraca set strzały uczestnika
         """
         return self.__player_shots
 
     def ships_to_place_info(self):
         """
         Zwraca informację o aktualnych statkach do rozstawienia
-        :return: string
         """
         return Strings.SHIPS_TO_SET_MESSAGE + "\n" + str(self.__ships_to_place)
 
@@ -197,15 +190,14 @@ class Competitor:
 
     def take_shot(self, coordinates):
         """
-        dodaje do listy __player_shots parę współrzędnych
+        dodaje do listy strzałów parę współrzędnych
         :param coordinates: współrzędne x,y oddanego strzału
         """
         self.__player_shots.add(coordinates)
 
     def drown_check(self):
         """
-        Sprawdza czy któryś statków z __list_of_ships nie jest jest pusty
-        :return: 1 jeśli pusty, 0 jeśli nie
+        Sprawdza czy któryś statek nie jest zatopiony
         """
         for i in range(len(self.__ships_list)):
             if not self.__ships_list[i].get_ship_position():
@@ -252,7 +244,6 @@ class Competitor:
     def get_drown_ships_taken_fields(self):
         """
         Zwraca zbiór współrzędnych zajętych przez zatopione okręty
-        :return: taken_coordinates
         """
         taken_coordinates = set()
         for ship in self.__hit_ships:
