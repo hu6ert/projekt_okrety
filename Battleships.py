@@ -11,6 +11,10 @@ class Game:
     Główna klasa odpowiadająca ze okno gry
     """
     def __init__(self, master):
+        """
+        Tworzy główne okno programu, ramki, plansze, przyciski, etykiety, dwie instancje klasy Competitor z modułu
+        objects, wyświetla napis powitalny
+        """
         self.__canvas = Canvas(master, height=700, width=1000)
         self.__canvas.pack()
         self.__main_frame = Frame(master, bg=Colors.MAP_COLOR)
